@@ -81,10 +81,12 @@ import {
   Loading,
   MessageBox,
   Message,
-  Notification
+  Notification,
+  Avatar
 } from "element-ui";
 
 Vue.use(Pagination);
+Vue.use(Avatar);
 Vue.use(Dialog);
 Vue.use(Autocomplete);
 Vue.use(Dropdown);
@@ -173,6 +175,7 @@ axios.defaults.baseURL = "http://localhost:9000";
 axios.defaults.withCredentials = true;
 axios.interceptors.request.use(config=>{
   console.log(config);
+  config.headers.Authorization="";
   return config;
 });
 Vue.prototype.$http=axios;

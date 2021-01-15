@@ -5,24 +5,42 @@
         <img src="../assets/images/5fffb2b43a5d6.png" />
         <span>Vue实战训练系统</span>
       </div>
-      <el-dropdown split-button type="primary" @click="handleClick">
-        <img class="userimg" :src="imageurl" />
-        <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item>黄金糕</el-dropdown-item>
-          <el-dropdown-item>狮子头</el-dropdown-item>
-          <el-dropdown-item>螺蛳粉</el-dropdown-item>
-          <el-dropdown-item>双皮奶</el-dropdown-item>
-          <el-dropdown-item>蚵仔煎</el-dropdown-item>
-        </el-dropdown-menu>
-      </el-dropdown>
+       <div class="avatar_circle"  @mouseover="avator_dropdown_show = true" @mouseout="avator_dropdown_show = false" >
+          <el-avatar class="avatar_box" :size="avator_size" :src="imageurl"></el-avatar>
+          <div  class="avator_dropdown">
+                <ul>
+                  <li><i class="el-icon-user-solid"></i></li>
+                  <li>个人中心</li>
+                </ul>
+                <ul>
+                  <li><i class="el-icon-s-tools"></i></li>
+                  <li>账号设置</li>
+                </ul>
+                <ul>
+                  <li><i class="el-icon-key"></i></li>
+                  <li>密码修改</li>
+                </ul>
+                <ul>
+                  <li><i class="el-icon-s-custom"></i></li>
+                  <li>头像修改</li>
+                </ul>
+                <ul>
+                  <li><i class="el-icon-message-solid"></i></li>
+                  <li>消息</li>
+                </ul>
+                <ul>
+                  <li><i class="el-icon-s-opportunity"></i></li>
+                  <li>帮助</li>
+                </ul>
+            <button class="quitlogin" @click="quitlogin()">退出登录</button>
+          </div>
+      </div>
     </el-header>
     <el-container>
       <el-aside width="200px">
           <el-menu
       default-active="2"
       class="el-menu-vertical-demo"
-      @open="handleOpen"
-      @close="handleClose"
       background-color="rgba(51,51,51)"
       text-color="#fff"
       active-text-color="#ffd04b">
@@ -69,12 +87,14 @@ export default {
       accountInfo: {
         sex: "男"
       },
-      imageurl: require("@/assets/images/5ffec671591a6.png")
+      imageurl: require("@/assets/images/5ffec6372729f.png"),
+      avator_dropdown_show:false,
+      avator_size:70
     };
   },
   methods: {
-    handleClick() {
-      alert("button click");
+    quitlogin(){
+      alert("退出登录");
     }
   }
 };
@@ -107,23 +127,34 @@ export default {
 .el-container {
   height: 100%;
 }
-.el-dropdown {
-  vertical-align: top;
-}
-.el-dropdown + .el-dropdown {
-  margin-left: 15px;
-}
-.el-icon-arrow-down {
-  font-size: 12px;
-}
-.userimg {
-  width: 100px;
-  height: 50px;
-}
-.el-button el-button--primary el-dropdown__caret-button {
-  height: 50px;
-}
  .el-menu {
     border-right: none;
+}
+.avatar_circle{
+  margin-right: 100px;
+}
+ul{
+  float: left;
+  list-style: none;
+  font-size: 10px;
+  padding: 0 20px;
+  width: 48px;
+}
+.avator_dropdown{
+  width: 264px;
+  position: absolute;
+  background-color: white;
+  top: 90px;
+  right: 20px;
+  border-radius: 5px;
+}
+.avatar_box{
+  position: relative;
+}
+.quitlogin{
+  background-color: rgba(247,246,246);
+  width: 264px;
+  border: none;
+  height: 40px;
 }
 </style>
