@@ -173,12 +173,18 @@ Vue.prototype.$http = axios;
 Vue.config.productionTip = false;
 axios.defaults.baseURL = "http://localhost:9000";
 axios.defaults.withCredentials = true;
-axios.interceptors.request.use(config=>{
-  console.log(config);
-  config.headers.Authorization="";
+axios.interceptors.request.use(config => {
+  var token = "";
+  document.cookie.split(";").forEach(x => {
+    if (x.indexOf("token=") > 0) {
+      token = x.replace("token=", "");
+    }
+  });
+  console.log(token);
+  config.headers.Authorization = token;
   return config;
 });
-Vue.prototype.$http=axios;
+Vue.prototype.$http = axios;
 new Vue({
   router,
   render: h => h(App)
