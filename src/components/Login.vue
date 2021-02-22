@@ -84,10 +84,11 @@ export default {
               `/api/UserAuthorization/user/login?username=${this.loginform.username}&password=${this.loginform.password}&code=${this.loginform.code}`
             )
             .then(x => {
-              if (x.data == "登陆成功!") {
+              window.console.log("login", x);
+              if (x.data.status == "success") {
                 this.$router.push("/menu");
               } else {
-                this.$message.error(x.data);
+                this.$message.error(x.data.message);
                 this.loginform.code = "";
                 document.getElementById("validate_img").click();
               }

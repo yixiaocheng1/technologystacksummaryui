@@ -99,8 +99,8 @@ export default {
   border-right: none;
 }
 .avatar_circle {
-  margin-right: 114px;
   height: 90px;
+  width: 264px;
   position: relative;
 }
 .operator_box {
@@ -133,11 +133,13 @@ export default {
   left: 50%;
   transform: translate(-50%, 0);
   border-radius: 5px;
+  height: 120px;
 }
 .avatar_box {
   position: absolute;
   left: 50%;
   top: 50%;
+  height: 90px;
   transform: translate(-50%, -50%);
 }
 .quitlogin {
